@@ -6,7 +6,7 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"
 database_name = "shblog-db"
-database_id = "placeholder-replace-after-create"
+database_id = "cb29294b-1abc-407a-abc1-7e44978b6bb3"
 
 [[r2_buckets]]
 binding = "IMAGES"
@@ -14,12 +14,12 @@ bucket_name = "shblog-images"
 
 [[kv_namespaces]]
 binding = "CACHE"
-id = "placeholder-replace-after-create"
+id = "d83e89c972ff45b08c5c841a7fe46a6c"
 
 [vars]
-FRONTEND_URL = "http://localhost:5173"
-JWT_SECRET = "change-me-in-production"
+FRONTEND_URL = "https://shblog.pages.dev"
+JWT_SECRET = "shblog-jwt-secret-diaoyudao110-2026"
 
 [env.production]
 [env.production.vars]
-FRONTEND_URL = "https://yourdomain.com"
+FRONTEND_URL = "https://shblog.pages.dev"

@@ -17,4 +17,9 @@ export default defineConfig({
       },
     },
   },
+  define: {
+    __WORKER_URL__: JSON.stringify(
+      process.env.WORKER_URL || 'https://shblog-worker.diaoyudao110.workers.dev'
+    ),
+  },
 })
