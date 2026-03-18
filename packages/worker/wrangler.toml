@@ -1,0 +1,25 @@
+name = "shblog-worker"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "shblog-db"
+database_id = "placeholder-replace-after-create"
+
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "shblog-images"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "placeholder-replace-after-create"
+
+[vars]
+FRONTEND_URL = "http://localhost:5173"
+JWT_SECRET = "change-me-in-production"
+
+[env.production]
+[env.production.vars]
+FRONTEND_URL = "https://yourdomain.com"
