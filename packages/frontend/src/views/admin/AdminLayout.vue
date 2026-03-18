@@ -17,6 +17,7 @@
       <n-layout-header bordered style="padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between">
         <span style="font-size:15px;opacity:0.6">{{ pageTitle }}</span>
         <div style="display:flex;align-items:center;gap:12px">
+          <n-button text tag="a" href="/" target="_blank">访问前台</n-button>
           <n-button text @click="ui.toggleDark()">{{ ui.dark ? '☀️' : '🌙' }}</n-button>
           <n-button text @click="auth.logout().then(() => $router.push('/login'))">退出</n-button>
         </div>
