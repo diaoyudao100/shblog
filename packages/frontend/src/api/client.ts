@@ -2,12 +2,10 @@ import axios from 'axios'
 
 const WORKER = 'https://shblog-worker.diaoyudao110.workers.dev'
 
-// 生产环境直接请求 Worker，本地开发走 Vite 代理
 const baseURL = import.meta.env.PROD ? `${WORKER}/api/v1` : '/api/v1'
 
 const client = axios.create({
   baseURL,
-  withCredentials: true,
   timeout: 15000,
 })
 
