@@ -69,10 +69,15 @@ export const usePostsStore = defineStore('posts', () => {
     loading.value = true
     try {
       const res = await postsApi.list(params)
-      posts.value = res.data.data.posts
-      total.value = res.data.data.total
+      const fetched = res.data.data.posts
+      if (fetched && fetched.length > 0) {
+        posts.value = fetched
+        total.value = res.data.data.total
+      } else {
+        posts.value = MOCK_POSTS
+        total.value = MOCK_POSTS.length
+      }
     } catch {
-      // 后端未启动时使用 mock 数据
       posts.value = MOCK_POSTS
       total.value = MOCK_POSTS.length
     } finally {
