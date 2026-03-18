@@ -9,6 +9,8 @@ import users from './routes/users'
 import feed from './routes/feed'
 import type { HonoEnv } from './types'
 
+import settings from './routes/settings'
+
 const app = new Hono<HonoEnv>()
 
 // CORS
@@ -24,6 +26,7 @@ api.route('/posts', posts)
 api.route('/tags', tags)
 api.route('/', comments)   // /posts/:postId/comments + /admin/comments
 api.route('/images', images)
+api.route('/settings', settings)
 api.route('/admin/users', users)
 
 app.route('/api/v1', api)

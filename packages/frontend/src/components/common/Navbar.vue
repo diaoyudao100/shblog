@@ -1,7 +1,7 @@
 <template>
   <n-layout-header bordered style="position:fixed;top:0;width:100%;z-index:100;height:64px">
     <div class="nav-inner">
-      <router-link to="/" class="logo">shblog</router-link>
+      <router-link to="/" class="logo">{{ site.settings.site_name }}</router-link>
       <div class="nav-links">
         <router-link to="/">首页</router-link>
         <router-link to="/archive">归档</router-link>
@@ -28,8 +28,10 @@
 <script setup lang="ts">
 import { useAuthStore } from '../../stores/auth'
 import { useUiStore } from '../../stores/ui'
+import { useSiteStore } from '../../stores/site'
 const auth = useAuthStore()
 const ui = useUiStore()
+const site = useSiteStore()
 </script>
 
 <style scoped>
