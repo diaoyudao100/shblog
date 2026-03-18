@@ -15,13 +15,22 @@ client.interceptors.response.use(
   res => res,
   async err => {
     const original = err.config
-    if (err.response?.status === 401 && !original._retry) {
+    // 只对非认证接口做 token 刷新，避免死循环
+    if (
+      err.response?.status === 401 &&
+      !original._retry &&
+      !original.url?.includes('/auth/')
+    ) {
       original._retry = true
       try {
-        await axios.post(`${baseURL.replace('/api/v1', '')}/api/v1/auth/refresh`, {}, { withCredentials: true })
+        await axios.post(
+          'https://shblog-worker.diaoyudao110.workers.dev/api/v1/auth/refresh',
+          {},
+          { withCredentials: true }
+        )
         return client(original)
       } catch {
-        window.location.href = '/login'
+        // 刷新失败，静默处理，不跳转
       }
     }
     return Promise.reject(err)
