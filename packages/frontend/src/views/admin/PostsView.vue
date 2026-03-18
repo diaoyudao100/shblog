@@ -12,7 +12,7 @@
       :columns="columns"
       :data="posts"
       :loading="loading"
-      :pagination="{ page, pageSize: 15, itemCount: total, onUpdatePage: p => { page = p; load() } }"
+      :pagination="{ page, pageSize: 15, itemCount: total, onUpdatePage: (p: number) => { page = p; load() } }"
     />
   </div>
 </template>

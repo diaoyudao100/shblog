@@ -34,7 +34,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { postsApi } from '../../api/posts'
 import { usePostsStore } from '../../stores/posts'
 import PostCard from '../../components/post/PostCard.vue'
 
