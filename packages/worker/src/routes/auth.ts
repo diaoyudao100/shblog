@@ -50,10 +50,10 @@ auth.post('/login', async (c) => {
   await c.env.DB.prepare('INSERT INTO refresh_tokens (user_id, token_hash, expires_at) VALUES (?,?,?)')
     .bind(user.id, tokenHash, expiresAt).run()
 
-  setCookie(c, 'access_token', accessToken, { httpOnly: true, sameSite: 'Lax', path: '/', maxAge: ACCESS_EXP })
-  setCookie(c, 'refresh_token', refreshToken, { httpOnly: true, sameSite: 'Lax', path: '/', maxAge: REFRESH_EXP })
+  setCookie(c, 'access_token', accessToken, { httpOnly: false, sameSite: 'None', secure: true, path: '/', maxAge: ACCESS_EXP })
+  setCookie(c, 'refresh_token', refreshToken, { httpOnly: false, sameSite: 'None', secure: true, path: '/', maxAge: REFRESH_EXP })
 
-  return ok(c, { id: user.id, username: user.username, email: user.email, role: user.role, avatar: user.avatar })
+  return ok(c, { id: user.id, username: user.username, email: user.email, role: user.role, avatar: user.avatar, access_token: accessToken })
 })
 
 auth.post('/logout', async (c) => {

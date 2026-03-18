@@ -35,7 +35,7 @@ async function submit() {
   try {
     const user = await auth.login(form.value.email, form.value.password)
     message.success('登录成功')
-    router.push(user.role === 'admin' ? '/admin' : '/')
+    router.push('/')
   } catch (e: any) {
     message.error(e.response?.data?.message || '登录失败')
   } finally {
